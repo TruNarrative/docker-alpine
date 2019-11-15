@@ -11,7 +11,8 @@ RUN apk update \
     docker-compose \
     make \
  && pip3 install -U pip \
- && pip3 install awscli outsystems-pipeline \
+ && pip3 install awscli \
+ && pip3 install outsystems-pipeline \
  && ln -s /usr/bin/python3 /usr/bin/python \
  && wget -P /tmp https://releases.hashicorp.com/terraform/0.12.13/terraform_0.12.13_linux_amd64.zip \
  && unzip -d /usr/local/bin /tmp/terraform*.zip \
