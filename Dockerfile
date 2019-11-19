@@ -11,7 +11,8 @@ RUN apk update \
     chromium-chromedriver \
  && pip3 install -U pip \
  && ln -s /usr/bin/python3 /usr/bin/python \
- && pip3 install -U selenium
+ && pip3 install selenium \
+ && pip3 install ppmail
 
 WORKDIR /shared
 
