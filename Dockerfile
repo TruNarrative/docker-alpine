@@ -10,11 +10,17 @@ RUN apk update \
     docker \
     docker-compose \
     make \
+    chromium \
+    chromium-chromedriver \
+    jq \
+    curl \
  && pip3 install -U pip \
  && pip3 install awscli \
  && pip3 install outsystems-pipeline \
+ && pip3 install ppmail \
  && ln -s /usr/bin/python3 /usr/bin/python \
- && wget -P /tmp https://releases.hashicorp.com/terraform/0.12.13/terraform_0.12.13_linux_amd64.zip \
+ && LATEST_VER=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version') \
+ && wget -P /tmp https://releases.hashicorp.com/terraform/${LATEST_VER}/terraform_${LATEST_VER}_linux_amd64.zip \
  && unzip -d /usr/local/bin /tmp/terraform*.zip \
  && rm -f /tmp/terraform*.zip
 
