@@ -17,6 +17,7 @@ RUN apk update \
  && pip3 install -U pip \
  && pip3 install awscli \
  && pip3 install outsystems-pipeline \
+ && pip3 install selenium \
  && pip3 install ppmail \
  && ln -s /usr/bin/python3 /usr/bin/python \
  && LATEST_VER=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version') \
