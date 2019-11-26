@@ -15,6 +15,7 @@ RUN apk update \
     jq \
     curl \
     maven \
+    openjdk8 \
  && pip3 install -U pip \
  && pip3 install awscli \
  && pip3 install outsystems-pipeline \
