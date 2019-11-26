@@ -14,6 +14,7 @@ RUN apk update \
     chromium-chromedriver \
     jq \
     curl \
+    maven \
  && pip3 install -U pip \
  && pip3 install awscli \
  && pip3 install outsystems-pipeline \
