@@ -19,7 +19,6 @@ RUN apk update \
     file \
  && pip3 install -U pip \
  && pip3 install awscli \
- && pip3 install outsystems-pipeline \
  && pip3 install selenium \
  && pip3 install ppmail \
  && ln -s /usr/bin/python3 /usr/bin/python \
