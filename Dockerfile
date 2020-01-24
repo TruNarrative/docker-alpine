@@ -17,6 +17,7 @@ RUN apk update \
     maven \
     openjdk8 \
     file \
+    sudo \
  && pip3 install -U pip \
  && pip3 install awscli \
  && pip3 install selenium \
