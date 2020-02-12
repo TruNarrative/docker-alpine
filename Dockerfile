@@ -18,6 +18,7 @@ RUN apk update \
     openjdk8 \
     file \
     sudo \
+    npm \
  && pip3 install -U pip \
  && pip3 install awscli \
  && pip3 install selenium \
@@ -26,6 +27,7 @@ RUN apk update \
  && LATEST_VER=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version') \
  && wget -P /tmp https://releases.hashicorp.com/terraform/${LATEST_VER}/terraform_${LATEST_VER}_linux_amd64.zip \
  && unzip -d /usr/local/bin /tmp/terraform*.zip \
- && rm -f /tmp/terraform*.zip
+ && rm -f /tmp/terraform*.zip \
+ && npm install -g newman
 
 CMD ["/bin/bash"]
