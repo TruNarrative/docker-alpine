@@ -23,6 +23,8 @@ RUN apk update \
     openssh-client \
  && pip3 install -U pip \
  && pip3 install awscli \
+ && pip3 install boto \
+ && pip3 install boto3 \
  && pip3 install selenium \
  && pip3 install ppmail \
  && pip3 install ansible \
