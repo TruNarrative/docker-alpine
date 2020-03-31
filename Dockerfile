@@ -21,6 +21,7 @@ RUN apk update \
     npm \
     git \
     openssh-client \
+    tree \
  && pip3 install -U pip \
  && pip3 install awscli \
  && pip3 install boto \
