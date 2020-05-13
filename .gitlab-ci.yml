@@ -1,4 +1,4 @@
-image: 225237029829.dkr.ecr.eu-west-2.amazonaws.com/trunarrative/alpine
+image: alpine
 
 variables:
   DOCKER_HOST: tcp://docker:2375/
@@ -13,6 +13,9 @@ stages:
 
 .build:
   stage: build
+  before_script:
+    - apk update
+    - apk add docker
   script:
     - docker build -t "${IMAGE}:${CI_JOB_NAME}" "$CI_JOB_NAME"
 
