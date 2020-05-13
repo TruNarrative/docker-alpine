@@ -9,15 +9,26 @@ services:
   - docker:dind
 
 stages:
-  - build
+  - build-base
+  - build-others
 
 .build:
-  stage: build
+  stage: build-others
   before_script:
     - apk update
     - apk add docker
   script:
     - docker build -t "${IMAGE}:${CI_JOB_NAME}" "$CI_JOB_NAME"
+
+base:
+  extends: .build
+  stage: build-base
+
+infra:
+  extends: .build
+
+qa:
+  extends: .build
 
 latest:
   extends: .build
