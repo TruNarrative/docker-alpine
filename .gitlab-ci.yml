@@ -21,13 +21,13 @@ stages:
     - apk add docker py3-pip jq
     - pip3 install -U pip
     - pip3 install awscli
-    - $(aws ecr get-login --no-include-email --region $REGION)
-    - docker login --username $(aws secretsmanager get-secret-value --secret-id 'dockerhub-username' --output json --region eu-west-2 | jq -r '.SecretString') --password $(aws secretsmanager get-secret-value --secret-id 'dockerhub-password' --output json --region $REGION | jq -r '.SecretString')
   script:
-    - docker build -t "${ECR}/${IMAGE}:${CI_JOB_NAME}" "$CI_JOB_NAME"
-    - docker push "${ECR}/${IMAGE}:${CI_JOB_NAME}"
-    - docker tag "${ECR}/${IMAGE}:${CI_JOB_NAME}" "${IMAGE}:${CI_JOB_NAME}"
+    - docker build -t "${IMAGE}:${CI_JOB_NAME}" "$CI_JOB_NAME"
+    - docker login --username $(aws secretsmanager get-secret-value --secret-id 'dockerhub-username' --output json --region eu-west-2 | jq -r '.SecretString') --password $(aws secretsmanager get-secret-value --secret-id 'dockerhub-password' --output json --region $REGION | jq -r '.SecretString')
     - docker push "${IMAGE}:${CI_JOB_NAME}"
+    - docker tag "${IMAGE}:${CI_JOB_NAME}" "${ECR}/${IMAGE}:${CI_JOB_NAME}"
+    - $(aws ecr get-login --no-include-email --region $REGION)
+    - docker push "${ECR}/${IMAGE}:${CI_JOB_NAME}"
 base:
   extends: .build
   stage: build-base
@@ -36,7 +36,4 @@ infra:
   extends: .build
 
 qa:
-  extends: .build
-
-latest:
   extends: .build

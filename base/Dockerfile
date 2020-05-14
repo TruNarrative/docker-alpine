@@ -15,6 +15,7 @@ RUN apk update \
     tree \
  && ln -s /usr/bin/python3 /usr/bin/python \
  && ln -s /usr/bin/pip3 /usr/bin/pip \
- && pip install -U pip
+ && pip install -U pip \
+ && mkdir -p ~/.config
 
 CMD ["/bin/bash"]

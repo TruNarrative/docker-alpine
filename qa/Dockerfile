@@ -8,7 +8,9 @@ RUN apk update \
     chromium-chromedriver \
     maven \
     openjdk8 \
+    npm \
  && pip install selenium \
- && pip install ppmail
+ && pip install ppmail \
+ && npm install -g newman
 
 CMD ["/bin/bash"]
