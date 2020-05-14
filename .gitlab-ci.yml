@@ -1,4 +1,4 @@
-image: alpine
+image: alpine:latest
 
 variables:
   DOCKER_HOST: tcp://docker:2375/
@@ -28,6 +28,7 @@ stages:
     - docker tag "${IMAGE}:${CI_JOB_NAME}" "${ECR}/${IMAGE}:${CI_JOB_NAME}"
     - $(aws ecr get-login --no-include-email --region $REGION)
     - docker push "${ECR}/${IMAGE}:${CI_JOB_NAME}"
+
 base:
   extends: .build
   stage: build-base

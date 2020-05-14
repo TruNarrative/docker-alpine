@@ -2,7 +2,8 @@ FROM alpine:latest
 LABEL maintainer="Peter Pakos <ppakos@trunarrative.com>"
 LABEL description="alpine:latest + base tools"
 
-RUN apk update \
+RUN mkdir -p ~/.config \
+ && apk update \
  && apk upgrade \
  && apk add --no-cache \
     bash \
@@ -11,11 +12,13 @@ RUN apk update \
     jq \
     make \
     py3-pip \
+    py3-yaml \
     sudo \
     tree \
  && ln -s /usr/bin/python3 /usr/bin/python \
  && ln -s /usr/bin/pip3 /usr/bin/pip \
- && pip install -U pip awscli ppmail \
- && mkdir -p ~/.config
+ && pip install -U pip setuptools wheel \
+    awscli \
+    ppmail
 
 CMD ["/bin/bash"]

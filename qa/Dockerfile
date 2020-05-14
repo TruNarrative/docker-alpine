@@ -7,9 +7,10 @@ RUN apk update \
     chromium \
     chromium-chromedriver \
     maven \
-    openjdk8 \
     npm \
- && pip install selenium \
+    openjdk8 \
+ && pip install \
+    selenium \
  && npm install -g newman
 
 CMD ["/bin/bash"]
