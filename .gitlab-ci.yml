@@ -26,6 +26,7 @@ stages:
   script:
     - docker build -t "${ECR}/${IMAGE}:${CI_JOB_NAME}" "$CI_JOB_NAME"
     - docker push "${ECR}/${IMAGE}:${CI_JOB_NAME}"
+    - docker tag "${ECR}/${IMAGE}:${CI_JOB_NAME}" "${IMAGE}:${CI_JOB_NAME}"
     - docker push "${IMAGE}:${CI_JOB_NAME}"
 base:
   extends: .build
