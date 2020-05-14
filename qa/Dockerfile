@@ -10,7 +10,6 @@ RUN apk update \
     openjdk8 \
     npm \
  && pip install selenium \
- && pip install ppmail \
  && npm install -g newman
 
 CMD ["/bin/bash"]

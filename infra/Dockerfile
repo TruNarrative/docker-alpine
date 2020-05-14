@@ -9,10 +9,8 @@ RUN apk update \
     git \
     openssh-client \
     openssl \
- && pip install awscli \
  && pip install boto \
  && pip install boto3 \
- && pip install ppmail \
  && pip install ansible \
  && LATEST_VER=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version') \
  && wget -P /tmp https://releases.hashicorp.com/terraform/${LATEST_VER}/terraform_${LATEST_VER}_linux_amd64.zip \
