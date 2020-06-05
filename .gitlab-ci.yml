@@ -35,11 +35,9 @@ base:
 
 dev-jdk8:
   extends: .build
-  stage: build-base
 
 dev-jdk11:
   extends: .build
-  stage: build-base
 
 infra:
   extends: .build
