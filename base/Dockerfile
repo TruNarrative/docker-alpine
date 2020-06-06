@@ -16,7 +16,6 @@ RUN mkdir -p ~/.config \
     sudo \
     tree \
  && ln -s /usr/bin/python3 /usr/bin/python \
- && ln -s /usr/bin/pip3 /usr/bin/pip \
  && pip install -U pip setuptools wheel \
     awscli \
     ppmail

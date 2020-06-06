@@ -1,8 +1,8 @@
 image: alpine:latest
 
 variables:
-  DOCKER_HOST: tcp://docker:2375/
   DOCKER_DRIVER: overlay2
+  DOCKER_HOST: tcp://docker:2375
   ECR: 225237029829.dkr.ecr.eu-west-2.amazonaws.com
   IMAGE: trunarrative/alpine
   REGION: eu-west-2
