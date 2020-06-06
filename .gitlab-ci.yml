@@ -1,21 +1,21 @@
 image: alpine:latest
 
 variables:
-  DOCKER_DRIVER: overlay2
-  DOCKER_HOST: tcp://docker:2375
-  ECR: 225237029829.dkr.ecr.eu-west-2.amazonaws.com
-  IMAGE: trunarrative/alpine
-  REGION: eu-west-2
+  DOCKER_DRIVER: "overlay2"
+  DOCKER_HOST: "tcp://docker:2375"
+  ECR: "225237029829.dkr.ecr.eu-west-2.amazonaws.com"
+  IMAGE: "trunarrative/alpine"
+  REGION: "eu-west-2"
 
 services:
   - docker:dind
 
 stages:
   - build-base
-  - build-others
+  - build-children
 
 .build:
-  stage: build-others
+  stage: build-children
   before_script:
     - apk update
     - apk add docker py3-pip jq
