@@ -6,6 +6,9 @@ RUN apk update \
  && apk add --no-cache \
     docker \
     maven \
-    openjdk8-jre
+    openjdk8
+
+ENV JAVA_HOME /usr/lib/jvm/default-jvm
+ENV PATH $JAVA_HOME/bin:$PATH
 
 CMD ["/bin/bash"]
