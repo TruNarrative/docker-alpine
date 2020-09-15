@@ -17,6 +17,7 @@ RUN mkdir -p ~/.config \
     tree \
  && ln -s /usr/bin/python3 /usr/bin/python \
  && pip install -U pip setuptools wheel \
+ && pip --use-feature=2020-resolver install \
     awscli \
     ppmail
 
