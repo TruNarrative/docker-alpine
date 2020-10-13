@@ -6,7 +6,9 @@ RUN apk update \
  && apk add --no-cache \
     docker \
     maven \
-    openjdk8
+    openjdk8 \
+    fontconfig \
+    ttf-dejavu
 
 ENV JAVA_HOME /usr/lib/jvm/default-jvm
 ENV PATH $JAVA_HOME/bin:$PATH
