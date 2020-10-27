@@ -14,6 +14,7 @@ RUN apk update \
  && pip --use-feature=2020-resolver install \
     boto \
     boto3 \
+    PTable \
     pywinrm \
     pytz \
  && LATEST_VER=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version') \
