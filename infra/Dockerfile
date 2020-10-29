@@ -1,6 +1,16 @@
+FROM trunarrative/alpine:base as builder
+WORKDIR /root
+RUN apk add --no-cache git go
+RUN go get -u github.com/awslabs/amazon-ecr-credential-helper/ecr-login/cli/docker-credential-ecr-login
+
 FROM trunarrative/alpine:base
 LABEL maintainer="Peter Pakos <ppakos@trunarrative.com>"
 LABEL description="alpine:latest + infra tools"
+
+# docker-credential-ecr-login
+COPY --from=builder /root/go/bin/docker-credential-ecr-login /usr/bin/
+RUN mkdir -p /root/.docker \
+  && echo -e "{\n  \"credsStore\": \"ecr-login\"\n}" >/root/.docker/config.json
 
 RUN apk update \
  && apk add --no-cache \
