@@ -11,7 +11,7 @@ RUN apk update \
     maven \
     npm \
     openjdk8 \
- && pip --use-feature=2020-resolver install \
+ && pip install \
     selenium \
  && npm install -g newman
 
