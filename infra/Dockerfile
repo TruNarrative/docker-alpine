@@ -22,6 +22,7 @@ RUN apk update \
     docker \
     docker-compose \
     git \
+    openjdk11-jdk \
     openssh-client \
     openssl \
     nodejs-current-npm \
@@ -34,7 +35,10 @@ RUN apk update \
  && LATEST_VER=$(curl -s https://checkpoint-api.hashicorp.com/v1/check/terraform | jq -r -M '.current_version') \
  && wget -P /tmp https://releases.hashicorp.com/terraform/${LATEST_VER}/terraform_${LATEST_VER}_linux_amd64.zip \
  && unzip -d /usr/local/bin /tmp/terraform*.zip \
- && rm -f /tmp/terraform*.zip \
+ && wget -P /tmp https://mirrors.gethosted.online/apache//jmeter/binaries/apache-jmeter-5.4.zip \
+ && unzip -d /opt /tmp/apache-jmeter*.zip \
+ && ln -s /opt/apache-jmeter-5.4/bin/jmeter /usr/bin/jmeter \
+ && rm -f /tmp/terraform*.zip /tmp/apache-jmeter*.zip \
  && npm install -g --silent serverless
 
 CMD ["/bin/bash"]
