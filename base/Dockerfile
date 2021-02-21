@@ -19,6 +19,6 @@ RUN mkdir -p ~/.config \
  && pip install -U pip setuptools wheel \
  && pip install \
     awscli \
-    ppmail
+    ppslack
 
 CMD ["/bin/bash"]
