@@ -2,6 +2,8 @@ FROM trunarrative/alpine:base
 LABEL maintainer="Peter Pakos <ppakos@trunarrative.com>"
 LABEL description="alpine:latest + openjdk11"
 
+WORKDIR /root
+
 RUN apk update \
  && apk add --no-cache \
     docker \
